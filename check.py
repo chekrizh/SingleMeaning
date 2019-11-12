@@ -1,5 +1,6 @@
 from flask import Flask, request
 from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
 import re
 import numpy as np
 from collections import Counter
@@ -9,6 +10,7 @@ import gensim.downloader as api
 
 model = api.load("glove-wiki-gigaword-100")
 app = Flask(__name__)
+stop = stopwords.words('english')
 
 
 @app.route('/check', methods=['POST'])
@@ -25,7 +27,7 @@ def check_meaning():
     # Преобразование двухмерного списка строк в одномерный список слов
     words = sum(sentences, [])
     # Удаление пустых слов
-    words = [word for word in words if word]
+    words = [word for word in words if word and word not in stop]
 
     # Переопределим список слов как set, чтобы избавиться от дубликатов
     # + лемматизация
@@ -64,7 +66,7 @@ def check_meaning():
     ]
 
     # получен массив, с процентами схожести всех предложений к первому
-    #print(distances)
+    print(dict_of_words)
 
     # по тз мне нужно определить схожи ли между собой два предложения, те первое и второе
     similarity = int(distances[1])

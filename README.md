@@ -14,4 +14,6 @@
 }
 ```
 
-*Примечание: nltk.download('wordnet')*
+*Примечание: 
+nltk.download('wordnet')
+nltk.download('stopwords')*
