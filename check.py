@@ -5,7 +5,6 @@ import numpy as np
 from collections import Counter
 from scipy.spatial.distance import cosine
 import gensim.downloader as api
-# nltk.download('wordnet')
 
 
 model = api.load("glove-wiki-gigaword-100")

@@ -1,0 +1,5 @@
+flask
+nltk
+numpy
+scipy
+gensim
