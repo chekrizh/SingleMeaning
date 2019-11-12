@@ -31,7 +31,7 @@ def check_meaning():
     # Переопределим список слов как set, чтобы избавиться от дубликатов
     # + лемматизация
     lemmatizer = WordNetLemmatizer()
-    words = [lemmatizer.lemmatize(word) for word in set(words) if word in model.wv.vocab]
+    words = [lemmatizer.lemmatize(word) for word in set(words)]
     # Создадим словарь формата ключ: слово, значение: индекс
     dict_of_words = {index: word for index, word in enumerate(words)}
     d = len(dict_of_words)
